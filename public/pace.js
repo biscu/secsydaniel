@@ -3,6 +3,7 @@
  * https://github.com/CodeByZach/pace/
  * Licensed MIT © HubSpot, Inc.
  */
+
 (function () {
   var AjaxMonitor,
     Bar,
@@ -1161,4 +1162,4 @@
       Pace.start();
     }
   }
-}.call(this));
+}).call(this);

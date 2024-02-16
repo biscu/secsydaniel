@@ -9,9 +9,7 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="/src/utils/pace.js"></script>
-    <script src="/src/loader.js"></script>
-    <script src="/src/utils/modernizr-3.11.2.min.js"></script>
+    <script src="/pace.js"></script>
     <script>
       Pace.on("done", function () {
         const loader = document.querySelector(".loader");
@@ -19,6 +17,15 @@
         setTimeout(() => {
           loader.remove();
         }, "1000");
+      });
+    </script>
+    <script>
+      window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+      };
+
+      Pace.on("done", function () {
+        console.log("LOADED");
       });
     </script>
   </body>
