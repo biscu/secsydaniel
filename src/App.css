@@ -70,7 +70,7 @@ html {
 }
 
 .mask {
-  width: 100%;
+  width: 99%;
   height: 100svh;
   position: absolute;
   z-index: -10;
