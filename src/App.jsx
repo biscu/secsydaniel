@@ -1,5 +1,6 @@
 import "./App.css";
 import Spline from "@splinetool/react-spline";
+import Header from "./component/header";
 
 function App() {
   return (
@@ -10,13 +11,7 @@ function App() {
       <div className="mask">
         <Spline scene="https://prod.spline.design/pbzHApcUvKnfcq1r/scene.splinecode" />
       </div>
-      <div className="info-wrapper">
-        <p className="info" id="text">
-          Secsy Daniel is a poliedric swedish designer with a big hairy carpet
-          in the living room and olimpic medal for which he did not compete in
-          any Olympic sport.
-        </p>
-      </div>
+      <Header />
     </>
   );
 }
