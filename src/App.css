@@ -98,4 +98,5 @@ html {
 
 body {
   font-kerning: none;
+  overflow-x: hidden;
 }
