@@ -10,21 +10,5 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script src="/pace.js"></script>
-    <script>
-      Pace.on("done", function () {
-        const loader = document.querySelector(".loader");
-        loader.classList.add("fadeOut");
-        setTimeout(() => {
-          loader.remove();
-        }, "1000");
-      });
-    </script>
-    <script>
-      window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-      };
-
-      Pace.on("done", function () {});
-    </script>
   </body>
 </html>

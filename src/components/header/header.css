@@ -1,0 +1,26 @@
+.mask {
+  width: 99%;
+  height: 100svh;
+  position: absolute;
+  z-index: -10;
+  top: 0;
+}
+
+.info {
+  z-index: -9999999;
+  position: absolute;
+  --wght: 400;
+  font-variation-settings: "wght" var(--wght);
+  margin: 0;
+  font-size: 4rem;
+  letter-spacing: -0.2rem;
+  text-transform: uppercase;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 600px) {
+  .info {
+    font-size: 2rem;
+    letter-spacing: -0.05rem;
+  }
+}

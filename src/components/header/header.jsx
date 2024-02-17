@@ -1,3 +1,4 @@
+import "./header.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
@@ -12,8 +13,8 @@ export default function Header() {
       delay: 2,
       ease: "expo.out",
       stagger: 0.1,
-    }); // <-- automatically reverted
-  }); // <-- scope is for selector text (optional)
+    });
+  });
 
   return (
     <div className="info-wrapper">
