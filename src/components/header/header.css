@@ -2,3 +2,8 @@
   --wght: 400;
   font-variation-settings: "wght" var(--wght);
 }
+
+.word {
+  transform-origin: center;
+  opacity: 0;
+}
