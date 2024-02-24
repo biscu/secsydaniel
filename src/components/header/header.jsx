@@ -11,16 +11,19 @@ export default function Header() {
 
     const wordElements = document.querySelectorAll(".char");
     const windowCenterX = window.innerWidth / 2;
-    const maxRotationAngle = 50;
-    const maxFontSizeReduction = 0.5;
-    const opacityReductionFactor = 0.8;
+    const maxRotationAngle = 40;
+    const maxFontSizeReduction = 0.6;
+    const opacityReductionFactor = 0.6;
 
     wordElements.forEach((word) => {
       const boundingRect = word.getBoundingClientRect();
       const wordCenterX = boundingRect.x + boundingRect.width / 2;
       const distanceFromCenter = Math.abs(wordCenterX - windowCenterX);
+      const rotationDirection = wordCenterX > windowCenterX ? 1 : -1;
       const rotationAngle =
-        (distanceFromCenter / windowCenterX) * maxRotationAngle;
+        (distanceFromCenter / windowCenterX) *
+        maxRotationAngle *
+        rotationDirection;
       const fontSizeReduction =
         (distanceFromCenter / windowCenterX) * maxFontSizeReduction;
       const opacityReduction =
@@ -35,6 +38,13 @@ export default function Header() {
       const originalOpacity = parseFloat(window.getComputedStyle(word).opacity);
       const newOpacity = originalOpacity - opacityReduction;
       word.style.opacity = newOpacity;
+
+      // Adjust transform-origin based on word position
+      if (wordCenterX > windowCenterX) {
+        word.style.transformOrigin = "center left";
+      } else {
+        word.style.transformOrigin = "center right";
+      }
     });
 
     gsap.registerPlugin(CustomEase);
@@ -59,7 +69,7 @@ export default function Header() {
   return (
     <div className="info-wrapper relative">
       <p
-        className="info z-[-9999999] left-0 right-0 mt-52 text-center max-w-[1000px] mx-auto mt-5 text-[3rem] absolute tracking-[-0.05rem] uppercase md:text-[4rem] md:tracking-[-0.2rem]"
+        className="info z-[-9999999] left-0 right-0 mt-4 text-center max-w-[1000px] mx-auto text-[2rem] absolute tracking-[-0.05rem] uppercase md:text-[3rem] md:tracking-[-0.2rem] md:mt-52"
         id="info"
       >
         {data.header}
