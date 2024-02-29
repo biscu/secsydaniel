@@ -67,7 +67,7 @@ export default function Header() {
   });
 
   return (
-    <div className="info-wrapper relative">
+    <div className="relative info-wrapper">
       <p
         className="info z-[-9999999] left-0 right-0 mt-4 text-center max-w-[1000px] mx-auto text-[2rem] absolute tracking-[-0.05rem] uppercase md:text-[3rem] md:tracking-[-0.2rem] md:mt-52"
         id="info"
