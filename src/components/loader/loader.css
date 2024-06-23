@@ -18,7 +18,6 @@
 .loader {
   display: flex;
   position: fixed;
-  align-items: start;
   justify-content: flex-end;
   background-color: #0f0f0f;
   width: 100%;
@@ -26,6 +25,7 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 
 .pace-running {

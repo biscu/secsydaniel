@@ -1,29 +1,55 @@
-import "./model.css";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { CustomEase } from "gsap/CustomEase";
-import Spline from "@splinetool/react-spline";
+import { Canvas } from "@react-three/fiber";
+import { MeshWobbleMaterial, OrbitControls } from "@react-three/drei";
+import { EffectComposer, Noise } from "@react-three/postprocessing";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import React, { Suspense, useRef } from "react";
+import { PerspectiveCamera } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+
+const Pizza = () => {
+  const refMesh = React.useRef();
+  useFrame(() => {
+    refMesh.current.rotation.y += 0.01;
+  });
+  const gltf = useLoader(GLTFLoader, "./pizza.glb");
+  return (
+    <>
+      <primitive
+        object={gltf.scene}
+        scale={5}
+        rotate={(0, 10, 40)}
+        ref={refMesh}
+      />
+    </>
+  );
+};
 
 export default function Model() {
-  useGSAP(() => {
-    gsap.registerPlugin(CustomEase);
-    CustomEase.create("animate-in", "M0,0 C0.562,0 0.11,1.004 1,1 ");
-
-    gsap.to("#model", {
-      y: -50,
-      duration: 0.5,
-      delay: 1.5,
-      opacity: 1,
-      ease: "animate-in",
-    });
-  });
   return (
-    <div className="w-[99%] h-[100svh] absolute -z-10 top-0;">
-      <Spline
-        className="opacity-0"
-        id="model"
-        scene="https://prod.spline.design/pbzHApcUvKnfcq1r/scene.splinecode"
-      />
-    </div>
+    <>
+      <div className="h-svh z-[0]">
+        <Suspense fallback={<span>loading...</span>}>
+          <Canvas camera={{ manual: true }}>
+            <PerspectiveCamera makeDefault manual position={[0, 20, 0]} />
+            <OrbitControls
+              enableRotate
+              enableZoom={false}
+              enablePan={false}
+              target={[0, 0, 0]}
+            />
+            <mesh>
+              <Pizza />
+              <MeshWobbleMaterial />
+              <ambientLight intensity={1} />
+              <directionalLight color="white" position={[0, 0, 5]} />
+            </mesh>
+            {/* <EffectComposer>
+              <Noise opacity={0.6} />
+            </EffectComposer> */}
+          </Canvas>
+        </Suspense>
+      </div>
+    </>
   );
 }

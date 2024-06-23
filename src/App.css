@@ -3,18 +3,15 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Satoshi";
-  src: url("../font/Satoshi-Variable.ttf") format("truetype");
+  font-family: "Font";
+  src: url("../font/Aeonik-Regular.otf") format("opentype");
 }
-
-html {
-  background-color: #0a0a0a;
-  color: white;
-  font-family: "Satoshi", sans-serif;
-  scroll-behavior: initial;
-}
-
 body {
-  font-kerning: none;
+  font-kerning: normal;
+  font-weight: normal !important;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  font-family: "Font", sans-serif;
+  scroll-behavior: initial;
 }
